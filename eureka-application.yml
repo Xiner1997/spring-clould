@@ -1,11 +1,3 @@
-logging:
-  pattern:
-    console: "%d{HH:mm:ss.SSS} %clr(%5p) %clr(-){faint} %clr(%-80.80logger{79}){cyan} %clr(:) %m%n"
-
-spring:
-  application:
-    name: eurekaServer
-
 server:
   port: 3000
 
@@ -17,8 +9,11 @@ eureka:
     hostname: eureka
 
   client:
-    registerWithEureka: true #不把自己作为一个客户端注册到自己身上
-    fetchRegistry: true  #不需要从服务端获取注册信息（因为在这里自己就是服务端，而且已经禁用自己注册了）
+    registerWithEureka: true #把自己作为一个客户端注册到自己身上
+    fetchRegistry: true  #要从服务端获取注册信息
     serviceUrl: #微服务要注册到的地址.
-      #http://localhost:3000/eureka
       defaultZone: http://eureka1:3001/eureka,http://eureka2:3002/eureka
+
+spring:
+  application:
+    name: eurekaServer
